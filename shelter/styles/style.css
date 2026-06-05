@@ -21,5 +21,24 @@ h1, h2, h3, h4, h5, figure, p, ol, ul {
   }
 
   html {
-      background-color: aqua;
+      font-family: 'Georgia';
   }
+
+:root {
+	--color-light-xl: #fff;
+	--color-light-l: #f6f6f6;
+	--color-light-s: #fafafa;
+	--color-dark-s: #cdcdcd;
+	--color-dark-m: #b2b2b2;
+	--color-dark-l: #545454;
+	--color-dark-xl: #4c4c4c;
+	--color-dark-2xl: #444;
+	--color-dark-3xl: #292929;
+	--color-primary: #f1cdb3;
+	--color-primary-light: #fddcc4;
+	--start-screen-gradient-background: #211f20;
+	--footer-gradient-background: #211f20;
+  --font-family: "Georgia", sans-serif;
+  --second-family: "Arial", sans-serif;
+  --third-family: "Inter", sans-serif;
+}
