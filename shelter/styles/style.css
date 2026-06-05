@@ -1,28 +1,31 @@
 h1, h2, h3, h4, h5, figure, p, ol, ul {
-    margin: 0;
-  }
+  margin: 0;
+}
   
-  ol[role="list"], ul[role="list"] {
-    list-style: none;
-    padding-inline: 0;
-  }
-  
-  h1, h2, h3, h4, h5 {
-    font-size: inherit;
-    font-weight: inherit;
-  }
-  a {
-    text-decoration: none;
-  }
-  
-  img {
-    display: block;
-    max-inline-size: 100%;
-  }
+ol[role="list"], ul[role="list"] {
+  list-style: none;
+  padding-inline: 0;
+}
 
-  html {
-      font-family: 'Georgia';
-  }
+h1, h2, h3, h4, h5 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-inline-size: 100%;
+}
+
+html {
+  list-style: none;
+  font-family: 'Georgia';
+  scroll-behavior: smooth;
+}
 
 :root {
 	--color-light-xl: #fff;
