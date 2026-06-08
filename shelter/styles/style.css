@@ -1,6 +1,5 @@
-* {
-  list-style: none;
-}
+@import './header.css';
+@import './promo.css';
 
 h1, h2, h3, h4, h5, figure, p, ol, ul {
   margin: 0;
@@ -47,4 +46,8 @@ html {
   --font-family: "Georgia", sans-serif;
   --second-family: "Arial", sans-serif;
   --third-family: "Inter", sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
