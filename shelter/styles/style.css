@@ -1,6 +1,7 @@
 @import './header.css';
 @import './promo.css';
 @import './about.css';
+@import './pets.css';
 
 h1, h2, h3, h4, h5, figure, p, ol, ul {
   margin: 0;
@@ -53,17 +54,16 @@ html {
   margin: 0 auto;
 }
 .text {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
-    color: var(--color-dark-s);
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 160%;
+  color: var(--color-dark-s);
 }
 .btn {
   display: block;
   border-radius: 100px;
   padding: 15px 45px;
-  width: 207px;
   height: 52px;
   background: var(--color-primary);
   font-weight: 400;
@@ -78,4 +78,14 @@ html {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: var(--color-dark-l);
+}
+.arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  border: 2px solid var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

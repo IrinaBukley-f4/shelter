@@ -1,5 +1,5 @@
 .about {
-    padding-top: 80px;
+    padding: 80px 0 100px;
     background: var(--color-light-xl);
     .container {
         display: flex;
