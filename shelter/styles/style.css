@@ -1,5 +1,6 @@
 @import './header.css';
 @import './promo.css';
+@import './about.css';
 
 h1, h2, h3, h4, h5, figure, p, ol, ul {
   margin: 0;
@@ -70,4 +71,11 @@ html {
   line-height: 130%;
   letter-spacing: 0.05em;
   color: var(--color-dark-3xl);
+}
+.title {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
 }

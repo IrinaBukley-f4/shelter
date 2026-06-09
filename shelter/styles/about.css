@@ -1,0 +1,31 @@
+.about {
+    padding-top: 80px;
+    background: var(--color-light-xl);
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+}
+.about__img {
+    width: 50%;
+    img {
+        padding-left: 0px;
+        width: 300px;
+        height: 408px;
+        margin: 0 auto;
+    }
+}
+.about__descr {
+    width: 50%;
+    margin-left: -50px;
+    padding-left: 20px;
+    padding-top: 14px;
+    
+}
+.about__title {
+    max-width: 370px;
+}
+.about__text {
+    margin-top: 25px;
+    max-width: 430px;
+}
