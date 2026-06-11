@@ -4,6 +4,7 @@
 @import './pets.css';
 @import './help.css';
 @import './donation.css';
+@import './footer.css';
 
 h1, h2, h3, h4, h5, figure, p, ol, ul {
   margin: 0;
