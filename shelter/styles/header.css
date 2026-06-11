@@ -39,5 +39,11 @@
         font-size: 15px;
         line-height: 160%;
         color: var(--color-dark-s);
+        &.active:after {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--color-primary);
+        }
     }
 }

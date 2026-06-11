@@ -20,7 +20,7 @@
             </a>
             <nav>
                 <ul class="menu">
-                    <li><a href="#about">About the shelter</a></li>
+                    <li><a class="active" href="#about">About the shelter</a></li>
                     <li><a href="#pets">Our pets</a></li>
                     <li><a href="#help">Help the shelter</a></li>
                     <li><a href="#contacts">Contacts</a></li>
@@ -33,8 +33,8 @@
             <div class="container">
                 <div class="promo__descr">
                     <h2 class="promo__title">Not only people need a house</h2>
-                    <p class="text">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                    <a href="./our-pets.html" class="btn">Make a friend</a>
+                    <p class="text promo__text">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
+                    <a href="./our-pets.html" class="btn promo__btn">Make a friend</a>
                 </div>
                 <div class="promo__img">
                     <img src="./images/start-screen-puppy.png" alt="puppy">
@@ -48,16 +48,16 @@
                 </div>
                 <div class="about__descr">
                     <h2 class="title about__title">About the shelter “Cozy House”</h2>
-                    <p class="text">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
-                    <p class="text">We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
+                    <p class="text about__text">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
+                    <p class="text about__text">We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
                 </div>
             </div>
         </section>
         <section id="pets" class="pets">
             <div class="container">
-                <h2 class="title">Our friends who are looking for a house</h2>
+                <h2 class="title pets__title">Our friends who <br> are looking for a house</h2>
                 <div class="pets__wrapper">
-                    <div class="prev"><img src="./icons/prev.png" alt="prev"></div>
+                    <div class="arrow prev"><img src="./icons/prev.png" alt="prev"></div>
                     <div class="cards">
                         <div class="card">
                             <img src="./images/pets/pets-katrine.jpg" alt="katrine">
@@ -72,16 +72,17 @@
                         <div class="card">
                             <img src="./images/pets/pets-woody.jpg" alt="woody">
                             <div>Woody</div>
-                            <button">Learn more</button>
+                            <button>Learn more</button>
                         </div>
                     </div>
+                    <div class="arrow next"><img src="./icons/next.png" alt="next"></div>
                 </div>
-                <a href="./our-pets.html" class="btn">Get to know the rest</a>
+                <a href="./our-pets.html" class="btn pets__btn">Get to know the rest</a>
             </div>
         </section>
-        <section id="help" class="help">
+       <section id="help" class="help">
             <div class="container">
-                <h2 class="title">How you can help our shelter</h2>
+                <h2 class="title help__title">How you can help our shelter</h2>
                 <div class="help__wrapper">
                     <div class="help__item">
                         <img src="./icons/icon-pet-food.svg" alt="food">
@@ -126,13 +127,13 @@
             <div class="container">
                 <div class="donation__img"><img src="./images/donation-dog.jpg" alt="donation-dog"></div>
                 <div class="donation__descr">
-                    <h2 class="title">You can also make a donation</h2>
-                    <p class="text">Name of the bank / Type of bank account</p>
+                    <h2 class="title donation__title">You can also make a donation</h2>
+                    <p class="donation__text">Name of the bank / Type of bank account</p>
                     <div class="credit-card">
                         <img src="./icons/credit-card.svg" alt="credit-card">
                         <span>8380 2880 8028 8791 7435</span>
                     </div>
-                    <p class="donation__text">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                    <p class="donation__info">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                 </div>
             </div>
         </section>
@@ -142,18 +143,18 @@
             <div class="footer__item">
                 <h2 class="footer__title">For questions and suggestions</h2>
                 <ul class="contacts">
-                    <li><a class="contacts__mail" href="mailto:email@shelter.com">email@shelter.com</a></li>
-                    <li><a class="contacts__tel" href="tel:+136745677554">+13 674 567 75 54</a></li>
+                    <li><a class="contacts__item contacts__mail" href="mailto:email@shelter.com">email@shelter.com</a></li>
+                    <li><a class="contacts__item contacts__tel" href="tel:+136745677554">+13 674 567 75 54</a></li>
                 </ul>
             </div>
-            <div class="footer__item">
+            <div class="footer__item footer__item-center">
                 <h2 class="footer__title">We are waiting for your visit</h2>
                 <ul class="contacts">
-                    <li><a class="contacts__map" href="http://" target="_blank">1 Central Street, Boston (entrance from the store)</a></li>
+                    <li><a class="contacts__map" href="http://" target="_blank">1 Central Street, Boston <br> (entrance from the store)</a></li>
                     <li><a class="contacts__map" href="http://" target="_blank">18 South Park, London </a></li>
                 </ul>
             </div>
-            <div class="footer__item">
+            <div class="footer__item footer__img">
                 <img src="./images/footer-puppy.png" alt="puppy">
             </div>
         </div>
