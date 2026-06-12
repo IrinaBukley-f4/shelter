@@ -48,4 +48,5 @@
     line-height: 115%;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);
+    cursor: pointer;
 }
