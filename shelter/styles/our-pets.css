@@ -40,11 +40,21 @@
     color: var(--color-dark-3xl);
     background: var(--color-primary);
     border: 2px solid var(--color-primary);
+    transition: all 0.5s ease-out;
+    &:hover {
+        background: var(--color-primary-light);
+    }
 
 }
 .pagination__disabled {
     border: 2px solid var(--color-dark-s);
+    pointer-events: none;
 }
 .pagination__active {
     border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    &:hover {
+        background: var(--color-primary-light);
+    }
 }

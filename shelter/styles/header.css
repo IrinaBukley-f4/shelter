@@ -39,6 +39,9 @@
         font-size: 15px;
         line-height: 160%;
         color: var(--color-dark-s);
+        &.active {
+            pointer-events: none
+        }
         &.active:after {
             content: '';
             display: block;
