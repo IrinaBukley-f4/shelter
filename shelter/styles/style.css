@@ -56,6 +56,12 @@ html {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  @media screen and (max-width: 1240px) {
+    max-width: 95%;
+  }
+  @media screen and (max-width: 768px) {
+    max-width: 708px;
+  }
 }
 .text {
   font-family: var(--second-family);
