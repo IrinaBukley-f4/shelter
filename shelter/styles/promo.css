@@ -23,24 +23,41 @@
     @media screen and (max-width: 900px) {
        margin-top: 149px;
     }
-}
-
-.promo__descr {
-    @media screen and (max-width: 900px) {
-       margin-left: 16px;
+     @media screen and (max-width: 370px) {
+       margin: 149px auto 0;
+       max-width: 80%;
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        text-align: center;
     }
 }
 
 .promo__img {
+    img {
+        @media screen and (max-width: 370px) {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
     @media screen and (max-width: 900px) {
         max-width: 569px;
-        height: 593px;
-        margin: 100px 0 0 149px;
+        max-height: 593px;
+        margin: 100px 0 0 137px;
+    }
+
+    @media screen and (max-width: 370px) {
+        margin: 105px 0 0 40px;
+        height: 272px;
     }
 }
 .promo__text {
     margin-top: 43px;
     max-width: 460px;
+    @media screen and (max-width: 320px) {
+        text-align: center;
+        margin: 43px -10px 0;
+    }
 }
 .promo__btn {
     margin-top: 42px;

@@ -62,6 +62,12 @@ html {
   @media screen and (max-width: 768px) {
     max-width: 708px;
   }
+  @media screen and (max-width: 740px) {
+    max-width: 95%;
+  }
+  @media screen and (max-width: 320px) {
+    max-width: 280px;
+  }
 }
 .text {
   font-family: var(--second-family);
