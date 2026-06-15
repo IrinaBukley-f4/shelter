@@ -97,4 +97,8 @@ html {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.2s ease-out;
+  &:hover {
+    background: var(--color-primary-light);
+  }
 }
