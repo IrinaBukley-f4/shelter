@@ -1,8 +1,18 @@
 .our-pets__header {
-    h1, h2, a{
+    h1, h2 {
         color: var(--color-dark-l);
+    }  
+    .menu__item {
+        color: var(--color-dark-l);
+    &.active {
+        color: var(--color-dark-3xl);
+    }
+    &:hover {
+        color: var(--color-dark-3xl);
     }
 }
+}
+
 .our-pets {
     margin-top: 120px;
     padding: 80px 0 100px;
@@ -40,7 +50,7 @@
     color: var(--color-dark-3xl);
     background: var(--color-primary);
     border: 2px solid var(--color-primary);
-    transition: all 0.5s ease-out;
+    transition: all 0.2s ease-out;
     &:hover {
         background: var(--color-primary-light);
     }
@@ -53,7 +63,7 @@
 .pagination__active {
     border: 2px solid var(--color-primary);
     cursor: pointer;
-    transition: all 0.5s ease-out;
+    transition: all 0.2s ease-out;
     &:hover {
         background: var(--color-primary-light);
     }

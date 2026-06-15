@@ -39,8 +39,12 @@
         font-size: 15px;
         line-height: 160%;
         color: var(--color-dark-s);
+        &:hover {
+            color: var(--color-light-s);
+        } 
         &.active {
-            pointer-events: none
+            pointer-events: none;
+            color: var(--color-light-s);
         }
         &.active:after {
             content: '';
