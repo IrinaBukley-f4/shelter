@@ -117,5 +117,6 @@ html {
   transition: all 0.2s ease-out;
   &:hover {
     background: var(--color-primary-light);
+    border: 2px solid var(--color-primary-light); 
   }
 }

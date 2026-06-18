@@ -76,6 +76,7 @@
     }
     &:hover > button {
         background: var(--color-primary-light);
+        border: 2px solid var(--color-primary-light);
     }
     img {
         width: 100%;
