@@ -56,6 +56,18 @@ html {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  @media screen and (max-width: 1240px) {
+    max-width: 95%;
+  }
+  @media screen and (max-width: 768px) {
+    max-width: 708px;
+  }
+  @media screen and (max-width: 740px) {
+    max-width: 95%;
+  }
+  @media screen and (max-width: 440px) {
+    max-width: 280px;
+  }
 }
 .text {
   font-family: var(--second-family);
@@ -87,6 +99,11 @@ html {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: var(--color-dark-l);
+  @media screen and (max-width: 440px) {
+    font-size: 25px;
+    line-height: 130%;
+    text-align: center;
+  }
 }
 .arrow {
   width: 52px;
@@ -100,5 +117,6 @@ html {
   transition: all 0.2s ease-out;
   &:hover {
     background: var(--color-primary-light);
+    border: 2px solid var(--color-primary-light); 
   }
 }

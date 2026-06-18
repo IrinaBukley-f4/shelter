@@ -4,6 +4,17 @@
     .container {
         display: flex;
         justify-content: center;
+        @media screen and (max-width: 900px) {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 80px;
+        }
+        @media screen and (max-width: 440px) {
+            gap: 42px;
+        }
+    }
+    @media screen and (max-width: 440px) {
+        padding: 42px 0;
     }
 }
 .about__img {
@@ -13,6 +24,14 @@
         width: 300px;
         height: 408px;
         margin: 0 auto;
+        @media screen and (max-width: 640px) {
+            width: 260px;
+            height: 353px;
+        }
+    }
+    @media screen and (max-width: 640px) {
+        width: 100%;
+        height: 353px;
     }
 }
 .about__descr {
@@ -23,6 +42,14 @@
     p {
         color: var(--color-dark-xl);
     }
+    @media screen and (max-width: 900px) {
+        width: 437px;
+        padding: 0;
+        margin-left: 8px;
+    }
+    @media screen and (max-width: 440px) {
+        width: 100%;
+    }
 }
 .about__title {
     max-width: 370px;
@@ -30,4 +57,10 @@
 .about__text {
     margin-top: 25px;
     max-width: 430px;
+    @media screen and (max-width: 440px) {
+        margin-top: 22px;
+        padding: 0 8px 0 0;
+        width: 100%;
+        text-align: justify;
+    }
 }

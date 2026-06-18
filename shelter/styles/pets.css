@@ -5,24 +5,62 @@
         margin: 60px auto 0;
         display: block;
         max-width: 261px;
+        @media screen and (max-width: 740px) {
+            margin: 114px auto 0;
+        }
+    }
+    @media screen and (max-width: 740px) {
+        padding: 42px 0;
     }
 }
 .pets__wrapper {
+    position: relative;
     margin-top: 60px;
     display: flex;
     align-items: center;
     gap: 53px;
-}
+    @media screen and (max-width: 1240px) {
+        justify-content: center;
+        gap: 35px;
+	}
+     @media screen and (max-width: 900px) {
+        gap: 12px;
+	}
+    @media screen and (max-width: 740px) {
+        margin-top: 42px;
+    }
+} 
 .pets__title {
     margin: 0 auto;
     max-width: 400px;
     text-align: center;
+    @media screen and (max-width: 740px) {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    @media screen and (max-width: 320px) {
+        margin: 0 -10px;
+    }
 }
 .cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 90px;
+    @media screen and (max-width: 1240px) {
+        gap: 70px;
+		& .card:nth-last-child(-n + 1) {
+			display: none;
+		}
+	}
+    @media screen and (max-width: 900px) {
+        gap: 40px;
+	}
+    @media screen and (max-width: 740px) {
+		& .card:nth-last-child(-n + 2) {
+			display: none;
+		}
+	}
 }
 .card {
     width: 270px;
@@ -31,13 +69,14 @@
     border-radius: 9px;
     padding-bottom: 35px;
     cursor: pointer;
-        transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 
     &:hover {
         background: var(--color-light-xl);
     }
     &:hover > button {
         background: var(--color-primary-light);
+        border: 2px solid var(--color-primary-light);
     }
     img {
         width: 100%;
@@ -70,4 +109,16 @@
         cursor: pointer;
         transition: all 0.2s ease-out;
     }
+}
+@media screen and (max-width: 440px) {
+   .prev {
+        position: absolute;
+        left: 43px;
+        bottom: -70px;
+   }
+   .next {
+        position: absolute;
+        right: 43px;
+        bottom: -70px;
+   }
 }
