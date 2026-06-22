@@ -4,13 +4,20 @@
     }  
     .menu__item {
         color: var(--color-dark-l);
-    &.active {
-        color: var(--color-dark-3xl);
+        &.active {
+            color: var(--color-dark-3xl);
+        }
+        &:hover {
+            color: var(--color-dark-3xl);
+        }
     }
-    &:hover {
-        color: var(--color-dark-3xl);
+    .burger {
+        @media screen and (max-width: 767px) {
+            span {
+                border: 1px solid #000000;
+            }
+        }
     }
-}
 }
 
 .our-pets {
@@ -21,10 +28,31 @@
         text-align: center;
         max-width: 400px;
         margin: 0 auto;
+        @media screen and (max-width: 440px) {
+             margin: 0 -10px;
+        }
     }
     .cards {
         margin-top: 58px;
         gap: 30px 40px;
+        @media screen and (max-width: 940px) {
+            margin-top: 30px;
+            & .card:nth-last-child(-n + 2) {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 610px) {
+            margin-top: 42px; 
+             & .card:nth-last-child(-n + 5) {
+                display: none;
+            }
+        }
+    }
+    @media screen and (max-width: 940px) {
+        padding-bottom: 75px;
+    }
+    @media screen and (max-width: 440px) {
+        padding: 42px 0;
     }
 }
 .pagination {
@@ -32,6 +60,13 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    @media screen and (max-width: 940px) {
+        margin-top: 40px;
+    }
+    @media screen and (max-width: 440px) {
+        gap: 10px;
+        margin: 40px -10px 0;
+    }
 }
 .pagination__item {
     width: 52px;
@@ -51,10 +86,6 @@
     background: var(--color-primary);
     border: 2px solid var(--color-primary);
     transition: all 0.2s ease-out;
-    &:hover {
-        background: var(--color-primary-light);
-    }
-
 }
 .pagination__disabled {
     border: 2px solid var(--color-dark-s);
@@ -66,5 +97,6 @@
     transition: all 0.2s ease-out;
     &:hover {
         background: var(--color-primary-light);
+        border: 2px solid var(--color-primary-light);
     }
 }
