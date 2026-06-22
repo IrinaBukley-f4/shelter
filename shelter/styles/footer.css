@@ -13,7 +13,10 @@
         @media screen and (max-width: 686px) {
             flex-direction: column;
             align-items: center;
-           gap: 40px;
+            gap: 40px;
+        }
+        @media screen and (max-width: 440px) {
+            max-width: 300px;
         }
     }
     @media screen and (max-width: 1240px) {
@@ -70,6 +73,11 @@
     }
     @media screen and (max-width: 440px) {
         width: 100%;
+        /* margin: 0 -10px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 .footer__img {
@@ -121,9 +129,9 @@
     background: url('../icons/icon-marker.png');
 }
 .footer__item-center {
-    margin-left: -28px;
+    /* margin-left: -28px; */
     @media screen and (max-width: 686px) {
-        margin-left: -20px;
+        /* margin-left: -20px; */
     }
     h2 {
        @media screen and (max-width: 686px) {

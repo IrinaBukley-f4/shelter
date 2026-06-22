@@ -28,7 +28,7 @@
         text-align: center;
         max-width: 400px;
         margin: 0 auto;
-        @media screen and (max-width: 320px) {
+        @media screen and (max-width: 440px) {
              margin: 0 -10px;
         }
     }
@@ -41,7 +41,7 @@
                 display: none;
             }
         }
-        @media screen and (max-width: 320px) {
+        @media screen and (max-width: 610px) {
             margin-top: 42px; 
              & .card:nth-last-child(-n + 5) {
                 display: none;
@@ -51,7 +51,7 @@
     @media screen and (max-width: 940px) {
         padding-bottom: 75px;
     }
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 440px) {
         padding: 42px 0;
     }
 }
