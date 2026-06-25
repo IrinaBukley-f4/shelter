@@ -61,6 +61,31 @@ modalEl.addEventListener('click', (e) => {
     }
 });
 
+// burger menu
+
+const menuEl = document.querySelector('.menu');
+const burgerEl = document.querySelector('.burger');
+const menuItemEls = document.querySelectorAll('.menu__item');
+
+burgerEl.addEventListener('click', () => {
+    burgerEl.classList.toggle('active');
+    menuEl.classList.toggle('active');
+    bodyEl.classList.toggle('active');
+});
+
+menuItemEls.forEach(elem => {
+    elem.addEventListener('click', () => {
+        burgerEl.classList.remove('active');
+        menuEl.classList.remove('active');
+        bodyEl.classList.remove('active');
+    });
+});
+
+window.addEventListener('resize', () => {
+    window.innerWidth > 768 ? bodyEl.classList.remove('active') : bodyEl.classList.add('active');
+});
+
+
 function renderModal (elem) {
     elem.addEventListener('click', (e) => {
         modalEl.classList.add('show');
@@ -88,6 +113,7 @@ function renderModal (elem) {
         });
     });
 }
+
 function createCards (parent, index, arr) {
     const card = document.createElement('div');
     card.classList.add('card');
