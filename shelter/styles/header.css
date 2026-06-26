@@ -64,7 +64,7 @@
     }
     @media screen and (max-width: 767px) {
         position: fixed;
-        transition: all 0.5s ease-in;
+        transition: opacity 0.5s ease-in, transform 0.5s ease-in, right 0.5s ease-in;
         top: 0;
         z-index: 2;
         width: 320px;
@@ -75,8 +75,13 @@
         gap: 40px;
         right: -100%;
 
+        opacity: 0;
+        transform: translateX(20px);
+
         &.active {
             right: 0;
+            opacity: 1;
+            transform: translateX(0);
             justify-content: center;
             padding: 0;
         }
