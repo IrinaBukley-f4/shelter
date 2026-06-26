@@ -2,27 +2,25 @@
 const mainCardsEl = document.querySelector('#main-cards');
 const ourPetsCardsEl = document.querySelector('#our-pets-cards');
 
-if(mainCardsEl) {
+if (mainCardsEl) {
     fetch('./pets.json')
         .then(response => response.json())
         .then(result => {
             mainCardsEl.innerHTML = '';
             for (let i = 0; i < 3; i++) {
                 let index = Math.floor(Math.random() * result.length);
-                createCards (mainCardsEl, index, result);
+                createCards(mainCardsEl, index, result);
             }
-        } 
-    );
+        });
 } else {
     fetch('./pets.json')
         .then(response => response.json())
         .then(result => {
             ourPetsCardsEl.innerHTML = '';
             for (let i = 0; i < result.length; i++) {
-                createCards (ourPetsCardsEl, i, result);
+                createCards(ourPetsCardsEl, i, result);
             }
-        }
-    );
+        });
 }
 
 // modal
@@ -35,29 +33,29 @@ const closeMainEl = document.querySelector('#close-main');
 const closeOurPetsEl = document.querySelector('#close-pets');
 
 document.addEventListener('DOMContentLoaded', () => {
-    (cardsEl) ? renderModal (cardsEl) : renderModal (petsCardsEl);
+    (cardsEl) ? renderModal(cardsEl) : renderModal(petsCardsEl);
 });
 
-if(closeMainEl) {
+if (closeMainEl) {
     closeMainEl.addEventListener('click', (e) => {
         e.preventDefault();
         modalEl.classList.remove('show');
-        bodyEl.classList.remove('active');
+        bodyEl?.classList.remove('active');
     });
-} 
+}
 
-if(closeOurPetsEl) {
+if (closeOurPetsEl) {
     closeOurPetsEl.addEventListener('click', (e) => {
         e.preventDefault();
         modalEl.classList.remove('show');
-        bodyEl.classList.remove('active');
+        bodyEl?.classList.remove('active');
     });
 }
 
 modalEl.addEventListener('click', (e) => {
-    if (!e.target.closest('.modal__content')){
+    if (!e.target.closest('.modal__content')) {
         modalEl.classList.remove('show');
-        bodyEl.classList.remove('active');
+        bodyEl?.classList.remove('active');
     }
 });
 
@@ -66,30 +64,62 @@ modalEl.addEventListener('click', (e) => {
 const menuEl = document.querySelector('.menu');
 const burgerEl = document.querySelector('.burger');
 const menuItemEls = document.querySelectorAll('.menu__item');
+const overlayEl = document.querySelector('.header__overlay');
+let isOpenMenu = false;
 
-burgerEl.addEventListener('click', () => {
-    burgerEl.classList.toggle('active');
-    menuEl.classList.toggle('active');
-    bodyEl.classList.toggle('active');
-});
+// prevent errors if elements absent on some pages
+if (burgerEl && menuEl && bodyEl && overlayEl) {
+    // сбросить на всякий случай (актуально при переходах между страницами)
+    bodyEl.classList.remove('active');
+    menuEl.classList.remove('active');
+    burgerEl.classList.remove('active');
+    overlayEl.setAttribute('aria-hidden', 'true');
+    isOpenMenu = false;
 
-menuItemEls.forEach(elem => {
-    elem.addEventListener('click', () => {
+    const closeMenu = () => {
         burgerEl.classList.remove('active');
         menuEl.classList.remove('active');
         bodyEl.classList.remove('active');
+        overlayEl.setAttribute('aria-hidden', 'true');
+        isOpenMenu = false;
+    };
+
+    burgerEl.addEventListener('click', () => {
+        if (!isOpenMenu) {
+            burgerEl.classList.add('active');
+            menuEl.classList.add('active');
+            bodyEl.classList.add('active');
+            overlayEl.setAttribute('aria-hidden', 'false');
+            isOpenMenu = true;
+        } else {
+            closeMenu();
+        }
     });
-});
 
-window.addEventListener('resize', () => {
-    window.innerWidth > 768 ? bodyEl.classList.remove('active') : bodyEl.classList.add('active');
-});
+    // click outside (overlay)
+    overlayEl.addEventListener('click', () => {
+        if (isOpenMenu) closeMenu();
+    });
 
+    menuItemEls.forEach(elem => {
+        elem.addEventListener('click', (e) => {
+            const target = e.target.closest('a');
+            if (!target) return;
+            closeMenu();
+        });
+    });
 
-function renderModal (elem) {
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 767) closeMenu();
+    });
+}
+
+function renderModal(elem) {
     elem.addEventListener('click', (e) => {
         modalEl.classList.add('show');
-        let index = e.target.closest('.card').id;
+        let index = e.target.closest('.card')?.id;
+        if (!index) return;
+
         fetch('./pets.json')
             .then(response => response.json())
             .then(result => {
@@ -110,11 +140,11 @@ function renderModal (elem) {
                     </ul>
                 </div>
             `;
-        });
+            });
     });
 }
 
-function createCards (parent, index, arr) {
+function createCards(parent, index, arr) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.id = arr[index].id;
@@ -125,3 +155,4 @@ function createCards (parent, index, arr) {
         `;
     parent.append(card);
 }
+
