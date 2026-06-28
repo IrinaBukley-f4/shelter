@@ -4,7 +4,6 @@ const ourPetsCardsEl = document.querySelector('#our-pets-cards');
 
 const getOurPetsLayout = () => {
     const w = window.innerWidth;
-    // ТЗ: 48 карточек => 6×8 desktop, 8×6 tablet, 16×3 mobile
     if (w <= 440) return { perPage: 3, totalPages: 16 };
     if (w <= 940) return { perPage: 6, totalPages: 8 };
     return { perPage: 8, totalPages: 6 };
@@ -14,8 +13,6 @@ const build48Sequence = (allPetsArr) => {
     const petsById = new Map(allPetsArr.map(p => [p.id, p]));
     const petIds = allPetsArr.map(p => p.id);
 
-    // Ровное распределение +5 по ТЗ: все виды появляются одинаковое число раз.
-    // В pets.json обычно 8 видов => каждый встречается 6 раз (48/8).
     const perPetBase = Math.floor(48 / petIds.length);
     const counts = new Map(petIds.map(id => [id, perPetBase]));
 
@@ -46,7 +43,6 @@ const build48Sequence = (allPetsArr) => {
 
             if (!candidates.length) return false;
 
-            // Берём из топ-3 по оставшемуся количеству
             const top = candidates.slice(0, Math.min(3, candidates.length));
             const pick = top[Math.floor(Math.random() * top.length)];
 
@@ -55,7 +51,6 @@ const build48Sequence = (allPetsArr) => {
             lastId = pick.id;
         }
 
-        // Проверка: нет одинаковых соседей в линейной последовательности
         for (let j = 1; j < result.length; j++) {
             if (result[j].id === result[j - 1].id) return false;
         }
@@ -63,7 +58,6 @@ const build48Sequence = (allPetsArr) => {
         return true;
     };
 
-    // Повторяем попытки, пока не найдём последовательность без одинаковых соседей
     for (let attempt = 0; attempt < 500; attempt++) {
         if (tryBuild()) return result.slice();
     }
@@ -85,17 +79,12 @@ const initOurPetsPagination = async () => {
     const paginationEl = document.querySelector('.pagination');
     if (!paginationEl) return;
 
-    // our-pets.html: .pagination__item в DOM порядке
-    // 0: dbl-left, 1: left, 2: num, 3: right, 4: dbl-right
     const items = Array.from(paginationEl.querySelectorAll('.pagination__item'));
     const firstBtn = items[0];
     const prevBtn = items[1];
     const indicator = items[2];
     const nextBtn = items[3];
     const lastBtn = items[4];
-
-    // У вас num-блок иконкой не является, поэтому клики на него не нужны.
-    // Важно: обработчики вешаем только на кнопки, а disabled задаём по классу.
 
     const getBtn = (el) => el && el.classList.contains('pagination__item') ? el : el;
 
@@ -136,7 +125,6 @@ const initOurPetsPagination = async () => {
         const start = (page - 1) * perPage;
         const group = seq48.slice(start, start + perPage);
 
-        // Анимация переключения +10
         ourPetsCardsEl.style.transition = 'opacity 0.2s ease-out';
         ourPetsCardsEl.style.opacity = '0';
 
@@ -176,8 +164,6 @@ const initOurPetsPagination = async () => {
     bind(nextBtn, () => goTo(currentPage + 1));
     bind(lastBtn, () => goTo(getOurPetsLayout().totalPages));
 
-    // У некоторых версток клик может не срабатывать из-за pointer-events на disabled.
-    // Поэтому назначаем дополнительные обработчики только на active-элементы.
     if (nextBtn && nextBtn.classList.contains('pagination__active')) {
         nextBtn.onclick = () => goTo(currentPage + 1);
     }
@@ -192,13 +178,10 @@ const initOurPetsPagination = async () => {
     renderPage(1);
 };
 
-// Рендер и пагинация
-// Если на странице есть блок our-pets — всегда запускаем пагинацию.
 if (ourPetsCardsEl) {
     initOurPetsPagination();
 }
 
-// Сохраняем старую логику для главной страницы (если используется)
 if (mainCardsEl) {
     fetch('./pets.json')
         .then(response => response.json())
@@ -258,39 +241,38 @@ if (burgerEl && menuEl && bodyEl && overlayEl) {
     bodyEl.classList.remove('active');
     menuEl.classList.remove('active');
     burgerEl.classList.remove('active');
-    overlayEl.setAttribute('aria-hidden', 'true');
+    overlayEl.classList.remove('active');
     isOpenMenu = false;
 
-    const closeMenu = () => {
+    function closeMenu() {
         burgerEl.classList.remove('active');
         menuEl.classList.remove('active');
         bodyEl.classList.remove('active');
-        overlayEl.setAttribute('aria-hidden', 'true');
+        overlayEl.classList.remove('active');
         isOpenMenu = false;
     };
+
 
     burgerEl.addEventListener('click', () => {
         if (!isOpenMenu) {
             burgerEl.classList.add('active');
             bodyEl.classList.add('active');
-            overlayEl.setAttribute('aria-hidden', 'false');
+            menuEl.classList.add('active');
+            overlayEl.classList.add('active');
             isOpenMenu = true;
         } else {
             menuEl.classList.remove('active');
             burgerEl.classList.remove('active');
-
-            setTimeout(() => {
-                bodyEl.classList.remove('active');
-                overlayEl.setAttribute('aria-hidden', 'true');
-            }, 250);
-
+            overlayEl.classList.remove('active');
             isOpenMenu = false;
         }
     });
 
-    overlayEl.addEventListener('click', () => {
-        if (isOpenMenu) closeMenu();
+    overlayEl.addEventListener('click', (e) => {
+        if (e.target !== overlayEl) return;
+        closeMenu();
     });
+
 
     menuItemEls.forEach(elem => {
         elem.addEventListener('click', (e) => {

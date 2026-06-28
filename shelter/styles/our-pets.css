@@ -2,19 +2,32 @@
     h1, h2 {
         color: var(--color-dark-l);
     }
+
     .menu__item {
         a {
             color: var(--color-dark-l);
             &.active {
                 color: var(--color-dark-3xl);
+                @media screen and (max-width: 767px) {
+                    color: var(--color-light-s);
+                }
             }
             &:hover {
                 color: var(--color-dark-3xl);
+            }
+            @media screen and (max-width: 767px) {
+                font-size: 32px;
+                color: var(--color-light-s);
             }
         }
     }
     .burger {
         @media screen and (max-width: 767px) {
+            &.active {
+                span {
+                    border: 1px solid var(--color-light-s);
+                }
+            }
             span {
                 border: 1px solid #000000;
             }
@@ -37,7 +50,6 @@
     .cards {
         margin-top: 58px;
         gap: 30px 40px;
-        /* ТЗ: карточки переключаются пагинацией, поэтому не скрываем их nth-last-child */
     }
     @media screen and (max-width: 940px) {
         padding-bottom: 75px;

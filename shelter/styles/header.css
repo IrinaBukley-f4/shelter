@@ -66,7 +66,7 @@
         position: fixed;
         transition: opacity 0.5s ease-in, transform 0.5s ease-in, right 0.5s ease-in;
         top: 0;
-        z-index: 2;
+        z-index: 3;
         width: 320px;
         height: 100vh;
         background-color: var(--color-dark-3xl);
@@ -119,14 +119,13 @@
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1;
+        z-index: 2;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease;
-    }
-
-    body.active .header__overlay {
-        opacity: 1;
-        pointer-events: auto;
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
     }
 }
