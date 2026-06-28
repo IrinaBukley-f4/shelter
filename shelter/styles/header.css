@@ -4,6 +4,7 @@
     left: 0;
     width: 100%;
     min-height: 60px;
+    z-index: 10;
     .container {
         display: flex;
         justify-content: space-between;
@@ -34,8 +35,9 @@
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     gap: 35px;
+    position: relative;
+
     a {
         font-family: var(--second-family);
         font-weight: 400;
@@ -55,9 +57,34 @@
             height: 3px;
             background: var(--color-primary);
         }
+        @media screen and (max-width: 767px) {
+            font-size: 32px;
+            color: var(--color-light-s);
+        }
     }
     @media screen and (max-width: 767px) {
-        display: none;
+        position: fixed;
+        transition: opacity 0.5s ease-in, transform 0.5s ease-in, right 0.5s ease-in;
+        top: 0;
+        z-index: 2;
+        width: 320px;
+        height: 100vh;
+        background-color: var(--color-dark-3xl);
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        right: -100%;
+
+        opacity: 0;
+        transform: translateX(20px);
+
+        &.active {
+            right: 0;
+            opacity: 1;
+            transform: translateX(0);
+            justify-content: center;
+            padding: 0;
+        }
     }
 }
 .burger {
@@ -68,10 +95,38 @@
         gap: 10px;
         width: 30px;
         height: 22px;
+        transition: all 0.5s ease-out;
+        position: relative;
+        z-index: 3;
         span {
             border: 1px solid var(--color-primary);
             width: 30px;
             height: 0;
         }
+        &.active {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.header__overlay {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .header__overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    body.active .header__overlay {
+        opacity: 1;
+        pointer-events: auto;
     }
 }

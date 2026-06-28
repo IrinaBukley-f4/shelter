@@ -20,10 +20,10 @@
             </a>
             <nav>
                 <ul class="menu">
-                    <li><a class="active" href="#about">About the shelter</a></li>
-                    <li><a href="./our-pets.html">Our pets</a></li>
-                    <li><a href="#help">Help the shelter</a></li>
-                    <li><a href="#contacts">Contacts</a></li>
+                    <li class="menu__item"><a class="active" href="#about">About the shelter</a></li>
+                    <li class="menu__item"><a href="./our-pets.html">Our pets</a></li>
+                    <li class="menu__item"><a href="#help">Help the shelter</a></li>
+                    <li class="menu__item"><a href="#contacts">Contacts</a></li>
                 </ul>
             </nav>
             <div class="burger">
@@ -32,6 +32,7 @@
                 <span></span>
             </div>
         </div>
+        <div class="header__overlay" aria-hidden="true"></div>
     </header>
     <main>
         <section class="promo">
@@ -63,23 +64,7 @@
                 <h2 class="title pets__title">Our friends who <br> are looking for a house</h2>
                 <div class="pets__wrapper">
                     <div class="arrow prev"><img src="./icons/prev.png" alt="prev"></div>
-                    <div class="cards">
-                        <div class="card">
-                            <img src="./images/pets/pets-katrine.jpg" alt="katrine">
-                            <div>Katrine</div>
-                            <button>Learn more</button>
-                        </div>
-                        <div class="card">
-                            <img src="./images/pets/pets-jennifer.jpg" alt="jennifer">
-                            <div>Jennifer</div>
-                            <button>Learn more</button>
-                        </div>
-                        <div class="card">
-                            <img src="./images/pets/pets-woody.jpg" alt="woody">
-                            <div>Woody</div>
-                            <button>Learn more</button>
-                        </div>
-                    </div>
+                    <div id="main-cards" class="cards"></div>
                     <div class="arrow next"><img src="./icons/next.png" alt="next"></div>
                 </div>
                 <a href="./our-pets.html" class="btn pets__btn">Get to know the rest</a>
@@ -164,6 +149,14 @@
             </div>
         </div>
     </footer>
-    <script src="./sripts/script.js"></script>
+    <div class="modal">
+        <div class="modal__content">
+            <div id="close-main" class="modal__close">
+                <img src="./icons/close.png" alt="close">
+            </div>
+            <div class="modal__wrapper"></div>
+        </div>
+    </div>
+    <script src="./sсripts/script.js"></script>
 </body>
 </html>

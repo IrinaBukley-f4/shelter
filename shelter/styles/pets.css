@@ -47,20 +47,25 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 90px;
-    @media screen and (max-width: 1240px) {
-        gap: 70px;
-		& .card:nth-last-child(-n + 1) {
-			display: none;
-		}
-	}
-    @media screen and (max-width: 900px) {
-        gap: 40px;
-	}
-    @media screen and (max-width: 740px) {
-		& .card:nth-last-child(-n + 2) {
-			display: none;
-		}
-	}
+     @media screen and (max-width: 1240px) and (min-width: 901px) {
+    gap: 70px;
+    & .card:nth-last-child(-n + 1) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 900px) and (min-width: 741px) {
+    gap: 40px;
+    & .card:nth-child(n + 3) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 740px) {
+    & .card:nth-last-child(n + 2) {
+      display: none;
+    }
+  }
 }
 .card {
     width: 270px;
