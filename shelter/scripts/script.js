@@ -4,7 +4,7 @@ const ourPetsCardsEl = document.querySelector('#our-pets-cards');
 
 const getOurPetsLayout = () => {
     const w = window.innerWidth;
-    if (w <= 440) return { perPage: 3, totalPages: 16 };
+    if (w <= 740) return { perPage: 3, totalPages: 16 };
     if (w <= 940) return { perPage: 6, totalPages: 8 };
     return { perPage: 8, totalPages: 6 };
 };
@@ -148,7 +148,7 @@ const initOurPetsPagination = async () => {
         }, 220);
     };
 
-    const bind = (el, handler) => {
+    const attachPaginationClick = (el, handler) => {
         if (!el) return;
         el.addEventListener('click', (e) => {
             if (el.classList.contains('pagination__disabled')) {
@@ -159,15 +159,14 @@ const initOurPetsPagination = async () => {
         });
     };
 
-    bind(firstBtn, () => goTo(1));
-    bind(prevBtn, () => goTo(currentPage - 1));
-    bind(nextBtn, () => goTo(currentPage + 1));
-    bind(lastBtn, () => goTo(getOurPetsLayout().totalPages));
+    attachPaginationClick(firstBtn, () => goTo(1));
+    attachPaginationClick(prevBtn, () => goTo(currentPage - 1));
+    attachPaginationClick(nextBtn, () => goTo(currentPage + 1));
+    attachPaginationClick(lastBtn, () => goTo(getOurPetsLayout().totalPages));
 
     if (nextBtn && nextBtn.classList.contains('pagination__active')) {
         nextBtn.onclick = () => goTo(currentPage + 1);
     }
-
 
     window.addEventListener('resize', () => {
         const { totalPages } = getOurPetsLayout();
@@ -183,16 +182,102 @@ if (ourPetsCardsEl) {
 }
 
 if (mainCardsEl) {
+    const prevArrowEl = document.querySelector('.arrow.prev');
+    const nextArrowEl = document.querySelector('.arrow.next');
+
+    const getPerView = () => {
+        const w = window.innerWidth;
+        if (w <= 440) return 1;
+        if (w <= 900) return 2;
+        return 3;
+    };
+
+
+    const shuffle = (arr) => {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    };
+
+    const buildNextGroup = (allPets, prevGroupIds, count) => {
+        const prevSet = new Set(prevGroupIds);
+        const candidates = allPets.filter(p => !prevSet.has(p.id));
+
+        const fallback = allPets.filter(p => !prevGroupIds.includes(p.id));
+        const source = candidates.length >= count ? candidates : (candidates.concat(fallback));
+
+        const uniqById = new Map();
+        source.forEach(p => uniqById.set(p.id, p));
+
+        const selected = shuffle(Array.from(uniqById.values())).slice(0, count);
+        return selected;
+    };
+
     fetch('./pets.json')
         .then(response => response.json())
-        .then(result => {
-            mainCardsEl.innerHTML = '';
-            for (let i = 0; i < Math.min(result.length, 3); i++) {
-                createCards(mainCardsEl, i, result);
-            }
+        .then(allPets => {
+            let isAnimating = false;
+            let currentGroup = [];
+
+            const renderGroup = (group, direction) => {
+                const perView = getPerView();
+                const groupToRender = group.slice(0, perView);
+
+                mainCardsEl.style.willChange = 'transform, opacity';
+                mainCardsEl.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+
+                const outX = direction === 'next' ? '-30px' : '30px';
+                const inX = direction === 'next' ? '30px' : '-30px';
+
+                mainCardsEl.style.opacity = '0';
+                mainCardsEl.style.transform = `translateX(${outX})`;
+
+                window.setTimeout(() => {
+                    mainCardsEl.innerHTML = '';
+                    groupToRender.forEach(p => {
+                        const idx = allPets.findIndex(x => x.id === p.id);
+                        if (idx !== -1) createCards(mainCardsEl, idx, allPets);
+                    });
+
+                    mainCardsEl.style.opacity = '1';
+                    mainCardsEl.style.transform = `translateX(${inX})`;
+
+                    window.requestAnimationFrame(() => {
+                        mainCardsEl.style.transform = 'translateX(0)';
+                    });
+                }, 140);
+            };
+
+            const nextGroup = (direction) => {
+                const count = getPerView();
+                const next = buildNextGroup(allPets, currentGroup.map(p => p.id), count);
+                return next;
+            };
+
+            const go = (direction) => {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                const next = nextGroup(direction);
+                renderGroup(next, direction);
+                currentGroup = next;
+
+                window.setTimeout(() => {
+                    isAnimating = false;
+                }, 300);
+            };
+
+            const count0 = getPerView();
+            currentGroup = shuffle(allPets).slice(0, count0);
+            renderGroup(currentGroup, 'next');
+
+            if (prevArrowEl) prevArrowEl.addEventListener('click', () => go('prev'));
+            if (nextArrowEl) nextArrowEl.addEventListener('click', () => go('next'));
         });
 }
-
 
 // modal
 const bodyEl = document.querySelector('body');
@@ -237,6 +322,7 @@ const menuItemEls = document.querySelectorAll('.menu__item');
 const overlayEl = document.querySelector('.header__overlay');
 let isOpenMenu = false;
 
+
 if (burgerEl && menuEl && bodyEl && overlayEl) {
     bodyEl.classList.remove('active');
     menuEl.classList.remove('active');
@@ -253,6 +339,7 @@ if (burgerEl && menuEl && bodyEl && overlayEl) {
     };
 
 
+
     burgerEl.addEventListener('click', () => {
         if (!isOpenMenu) {
             burgerEl.classList.add('active');
@@ -262,6 +349,7 @@ if (burgerEl && menuEl && bodyEl && overlayEl) {
             isOpenMenu = true;
         } else {
             menuEl.classList.remove('active');
+            bodyEl.classList.remove('active');
             burgerEl.classList.remove('active');
             overlayEl.classList.remove('active');
             isOpenMenu = false;
@@ -282,10 +370,11 @@ if (burgerEl && menuEl && bodyEl && overlayEl) {
         });
     });
 
-    window.addEventListener('resize', () => {
+window.addEventListener('resize', () => {
         if (window.innerWidth > 767) closeMenu();
     });
 }
+
 
 function renderModal(elem) {
     elem.addEventListener('click', (e) => {
