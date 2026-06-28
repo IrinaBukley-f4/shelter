@@ -147,7 +147,7 @@ body.active {
   min-height: 500px;
   background: var(--color-light-s);
   display: flex;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     max-width: 630px;
     min-height: 350px;
   }
@@ -163,7 +163,7 @@ body.active {
   position: absolute;
   top: -52px;
   right: -42px;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 720px) {
     right: -30px;
   }
 }
@@ -174,21 +174,21 @@ body.active {
   img {
     width: 100%;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     width: 350px;
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 720px) {
     display: none;
   }
 }
 .modal__descr {
   width: 400px;
   padding: 50px 20px 20px 30px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     width: 280px;
     padding: 10px 8px 9px 11px;
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 720px) {
     width: 240px;
     padding: 10px;
   }
@@ -199,7 +199,7 @@ body.active {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #000;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 720px) {
     text-align: center;
   }
 }
@@ -210,7 +210,7 @@ body.active {
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #000;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 720px) {
     text-align: center;
   }
 }
@@ -221,7 +221,7 @@ body.active {
   line-height: 116%;
   letter-spacing: 0.06em;
   color: #000;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
    margin-top: 20px;
    font-size: 13px;
    line-height: 111%;
@@ -252,11 +252,11 @@ body.active {
       font-weight: 700;
       margin-right: -6px;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 990px) {
       margin-top: 5px;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     margin-top: 20px;
   }
 }

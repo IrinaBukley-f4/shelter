@@ -1,18 +1,33 @@
 .our-pets__header {
     h1, h2 {
         color: var(--color-dark-l);
-    }  
+    }
+
     .menu__item {
-        color: var(--color-dark-l);
-        &.active {
-            color: var(--color-dark-3xl);
-        }
-        &:hover {
-            color: var(--color-dark-3xl);
+        a {
+            color: var(--color-dark-l);
+            &.active {
+                color: var(--color-dark-3xl);
+                @media screen and (max-width: 767px) {
+                    color: var(--color-light-s);
+                }
+            }
+            &:hover {
+                color: var(--color-dark-3xl);
+            }
+            @media screen and (max-width: 767px) {
+                font-size: 32px;
+                color: var(--color-light-s);
+            }
         }
     }
     .burger {
         @media screen and (max-width: 767px) {
+            &.active {
+                span {
+                    border: 1px solid var(--color-light-s);
+                }
+            }
             span {
                 border: 1px solid #000000;
             }
@@ -35,18 +50,6 @@
     .cards {
         margin-top: 58px;
         gap: 30px 40px;
-        @media screen and (max-width: 940px) {
-            margin-top: 30px;
-            & .card:nth-last-child(-n + 2) {
-                display: none;
-            }
-        }
-        @media screen and (max-width: 610px) {
-            margin-top: 42px; 
-             & .card:nth-last-child(-n + 5) {
-                display: none;
-            }
-        }
     }
     @media screen and (max-width: 940px) {
         padding-bottom: 75px;
@@ -55,6 +58,7 @@
         padding: 42px 0;
     }
 }
+
 .pagination {
     margin: 61px auto 0;
     display: flex;
@@ -68,6 +72,7 @@
         margin: 40px -10px 0;
     }
 }
+
 .pagination__item {
     width: 52px;
     height: 52px;
@@ -76,6 +81,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .pagination__num {
     font-weight: 400;
     font-size: 20px;
@@ -87,10 +93,12 @@
     border: 2px solid var(--color-primary);
     transition: all 0.2s ease-out;
 }
+
 .pagination__disabled {
     border: 2px solid var(--color-dark-s);
     pointer-events: none;
 }
+
 .pagination__active {
     border: 2px solid var(--color-primary);
     cursor: pointer;
@@ -100,3 +108,4 @@
         border: 2px solid var(--color-primary-light);
     }
 }
+
