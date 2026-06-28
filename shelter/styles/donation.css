@@ -1,0 +1,87 @@
+.donation {
+    padding: 80px 0 97px;
+    background: var(--color-light-l);
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        @media screen and (max-width: 900px) {
+            align-items: center;
+            flex-direction: column-reverse;
+            gap: 52px;
+        }
+        @media screen and (max-width: 510px) {
+            gap: 31px;
+        }
+    }
+    @media screen and (max-width: 510px) {
+        padding: 42px 0;        
+    }
+}
+.donation__img {
+    width: 505px;
+    margin-top: 10px;
+    @media screen and (max-width: 510px) {
+         width: 260px;     
+    }
+}
+.donation__descr {
+    max-width: 380px;
+}
+.donation__title {
+    max-width: 300px;
+    @media screen and (max-width: 900px) {
+        margin: 0;
+    }
+    @media screen and (max-width: 510px) {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
+.donation__text {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+    @media screen and (max-width: 510px) {
+        line-height: 160%;  
+        letter-spacing: 0em;
+        text-align: center;
+    }
+}
+.donation__info {
+    margin-top: 20px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: var(--second-family);
+    line-height: 150%;
+    color: var(--color-dark-m);
+    @media screen and (max-width: 510px) {
+       text-align: justify;
+    }
+}
+.credit-card {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    border-radius: 9px;
+    padding: 9px 13px;
+    width: 349px;
+    height: 43px;
+    background: var(--color-primary);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+    cursor: pointer;
+    @media screen and (max-width: 510px) {
+        font-size: 15px;
+        line-height: 110%;
+        padding: 10px 15px;
+        width: 281px;
+    }
+}
